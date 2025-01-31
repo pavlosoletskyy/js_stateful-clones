@@ -9,23 +9,23 @@
  */
 function transformStateWithClones(state, actions) {
   
-    let currentState = { ...state };
+    let current = { ...state };
     let result = [];
     for (const action of actions) {
         switch (action.type) {
             case 'clear':
-                currentState = {};
+                current = {};
                 break;
             case 'addProperties':
-                currentState = { ...currentState, ...action.extraData };
+                current = { ...current, ...action.extraData };
                 break;
             case 'removeProperties':
-                currentState = Object.fromEntries(
-                    Object.entries(currentState).filter(([key]) => !action.keysToRemove.includes(key))
+                current = Object.fromEntries(
+                    Object.entries(current).filter(([key]) => !action.keysToRemove.includes(key))
                 );
                 break;
         }
-        result.push({ ...currentState });
+        result.push({ ...current });
     }
     return result;
 }
