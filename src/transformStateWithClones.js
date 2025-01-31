@@ -1,6 +1,14 @@
+
 'use strict';
 
+/**
+ * @param {Object} state
+ * @param {Object[]} actions
+ *
+ * @return {Object[]}
+ */
 function transformStateWithClones(state, actions) {
+  
     let currentState = { ...state };
     let result = [];
     for (const action of actions) {
@@ -21,3 +29,5 @@ function transformStateWithClones(state, actions) {
     }
     return result;
 }
+
+module.exports = transformStateWithClones;
